@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品分類 - JRUVAULT 代購網站</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+   <!-- 頁首 -->
+<header>
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="JRUVAULT Logo">
+        <h1>歡迎來到 JRUVAULT 代購網站</h1>
+    </div>
+    <nav>
+        <ul class="nav-left">
+            <li><a href="/">首頁</a></li>
+            <li><a href="/products">產品分類</a></li>
+            <li><a href="/how_it_works">如何運作</a></li>
+            <li><a href="/faq">常見問題</a></li>
+            <li><a href="/contact">聯絡我們</a></li>
+        </ul>
+        <ul class="nav-right">
+            <li><a href="/login">登入</a></li>
+            <li><a href="/register">註冊</a></li>
+            <li><a href="/cart">購物車 </a></li>  <!-- 顯示購物車數量 -->
+        </ul>
+    </nav>
+</header>
+
+
+
+    <!-- 產品內容 -->
+    <main>
+        <section class="product-section">
+            
+            <ul class="product-list">
+                <li>
+                    <a href="{{ url_for('shoes') }}" class="product-item">
+                        <img src="{{ url_for('static', filename='shoes-icon.png') }}" alt="鞋子圖標" class="product-image">
+                        鞋子
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('clothing') }}" class="product-item">
+                        <img src="{{ url_for('static', filename='clothing-icon.png') }}" alt="服裝圖標" class="product-image">
+                        服裝
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('fitting') }}" class="product-item">
+                        <img src="{{ url_for('static', filename='fitting-icon.png') }}" alt="配件圖標" class="product-image">
+                        配件
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('toys') }}" class="product-item">
+                        <img src="{{ url_for('static', filename='toys-icon.png') }}" alt="玩具公仔圖標" class="product-image">
+                        玩具公仔
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2025 JRUVAULT 代購網站。所有權利保留。</p>
+    </footer>
+</body>
+</html>

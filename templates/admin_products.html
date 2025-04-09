@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>商品資料管理</title>
+</head>
+<body>
+    <h1>目前所有商品</h1>
+    <ul>
+        {% for product in products %}
+        <li>
+            <strong>ID:</strong> {{ product.id }} <br>
+            <strong>名稱:</strong> {{ product.name }} <br>
+            <strong>價格:</strong> {{ product.price }} <br>
+            <strong>圖片檔名:</strong> {{ product.image }}
+            <hr>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/">回首頁</a>
+</body>
+</html>

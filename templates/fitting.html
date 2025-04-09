@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配件 - JRUVAULT 代購網站</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* 基本樣式 */
+        body {
+            font-family: 'Segoe UI', '微軟正黑體', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        /* 頁首 */
+        header {
+            background-color: #f5a9b8;
+            color: #fff;
+            padding: 20px 40px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        header img {
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+
+        nav ul {
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #d18d95;
+        }
+
+        /* 主內容區 */
+        main {
+            padding: 120px 20px 40px;  /* 增加 padding-top 來避免被header遮擋 */
+        }
+
+        /* 配件區塊 */
+        section {
+            padding: 60px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #d94c84;
+            margin-bottom: 40px;
+        }
+
+        section ul {
+            font-size: 1.2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        section ul li {
+            margin: 12px 0;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #f5a9b8;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            border-top: 2px solid #ffc1d6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頁首 -->
+<header>
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="JRUVAULT Logo">
+        <h1>歡迎來到 JRUVAULT 代購網站</h1>
+    </div>
+    <nav>
+        <ul class="nav-left">
+            <li><a href="/">首頁</a></li>
+            <li><a href="/products">產品分類</a></li>
+            <li><a href="/how_it_works">如何運作</a></li>
+            <li><a href="/faq">常見問題</a></li>
+            <li><a href="/contact">聯絡我們</a></li>
+        </ul>
+        <ul class="nav-right">
+            <li><a href="/login">登入</a></li>
+            <li><a href="/register">註冊</a></li>
+            <li><a href="/cart">購物車 </a></li>  <!-- 顯示購物車數量 -->
+        </ul>
+    </nav>
+</header>
+
+
+    <!-- 產品內容 -->
+    <main>
+        <section>
+            <h2>我們的配件有</h2>
+            <p>在這裡你可以找到各式各樣的配件，完美搭配你的服裝和鞋子！</p>
+            <!-- 你可以在這裡列出具體的配件 -->
+            <ul>
+                <li>帽子</li>
+                <li>手錶</li>
+                <li>包包</li>
+                <li>眼鏡</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2025 JRUVAULT 代購網站。所有權利保留。</p>
+    </footer>
+
+</body>
+</html>

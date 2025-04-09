@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我們 - JRUVAULT 代購</title>
+    <style>
+        /* 保持統一風格 */
+        /* 基本樣式 */
+        body {
+            font-family: 'Segoe UI', '微軟正黑體', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        /* 頁首 */
+        header {
+            background-color: #f5a9b8;
+            color: #fff;
+            padding: 20px 40px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Logo 容器 */
+        header .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header img {
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        /* 導航 */
+        nav {
+            display: flex;
+            justify-content: space-between;  /* 讓 nav 左右項目分開 */
+            align-items: center;
+            width: 100%;
+            padding-top: 10px;
+        }
+
+        nav .nav-left {
+            display: flex;
+            justify-content: center;  /* 使導航項目居中 */
+            gap: 20px;  /* 項目之間的間隔 */
+            flex-grow: 1;  /* 使得導航項目佔滿剩餘空間 */
+        }
+
+        nav .nav-right {
+            display: flex;
+            gap: 20px;  /* 註冊與登入之間的間隔 */
+        }
+
+        /* 導航項目 */
+        nav ul li a {
+            color: #fff;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #d18d95;
+        }
+
+        /* 主內容區 */
+        main {
+            padding: 120px 20px 40px;  /* 保證不被 header 遮擋 */
+            background-color: #fff;
+        }
+
+        h1 {
+            color: #d94c84;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        form input[type="submit"] {
+            background-color: #d94c84;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #b3386f;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #f5a9b8;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            border-top: 2px solid #ffc1d6;
+        }
+
+    </style>
+</head>
+<body>
+
+   <!-- 頁首 -->
+<header>
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="JRUVAULT Logo">
+        <h1>歡迎來到 JRUVAULT 代購網站</h1>
+    </div>
+    <nav>
+        <ul class="nav-left">
+            <li><a href="/">首頁</a></li>
+            <li><a href="/products">產品分類</a></li>
+            <li><a href="/how_it_works">如何運作</a></li>
+            <li><a href="/faq">常見問題</a></li>
+            <li><a href="/contact">聯絡我們</a></li>
+        </ul>
+        <ul class="nav-right">
+            <li><a href="/login">登入</a></li>
+            <li><a href="/register">註冊</a></li>
+            <li><a href="/cart">購物車 </a></li>  <!-- 顯示購物車數量 -->
+        </ul>
+    </nav>
+</header>
+
+    <!-- 內容區域 -->
+    <main>
+        <h1>聯絡我們</h1>
+
+        <form action="/contact" method="POST">
+            <label for="name">姓名：</label>
+            <input type="text" id="name" name="name" required placeholder="請輸入您的姓名">
+
+            <label for="email">電子郵件：</label>
+            <input type="email" id="email" name="email" required placeholder="請輸入您的電子郵件">
+
+            <label for="message">訊息：</label>
+            <textarea id="message" name="message" rows="4" required placeholder="請輸入您的訊息"></textarea>
+
+            <input type="submit" value="提交">
+        </form>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2025 JRUVAULT 代購網站。所有權利保留。</p>
+    </footer>
+
+    <script>
+        window.addEventListener('load', function() {
+            const header = document.querySelector('header');
+            const headerHeight = header.offsetHeight; // 獲取 header 高度
+            const main = document.querySelector('main');
+            main.style.paddingTop = headerHeight + 'px';
+        });
+
+        window.addEventListener('resize', function() {
+            const header = document.querySelector('header');
+            const headerHeight = header.offsetHeight;
+            const main = document.querySelector('main');
+            main.style.paddingTop = headerHeight + 'px';
+        });
+    </script>
+
+</body>
+</html>

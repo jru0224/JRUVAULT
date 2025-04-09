@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車 - JRUVAULT 代購網站</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<!-- 頁首 -->
+<header>
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="JRUVAULT Logo">
+        <h1>購物車</h1>
+    </div>
+    <nav>
+        <ul class="nav-left">
+            <li><a href="/">首頁</a></li>
+            <li><a href="/products">產品分類</a></li>
+            <li><a href="/how_it_works">如何運作</a></li>
+            <li><a href="/faq">常見問題</a></li>
+            <li><a href="/contact">聯絡我們</a></li>
+        </ul>
+        <ul class="nav-right">
+            <li><a href="/login">登入</a></li>
+            <li><a href="/register">註冊</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- 購物車區塊 -->
+<main>
+    <section class="cart-section">
+        <h2>您的購物車</h2>
+        {% if cart %}
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>商品名稱</th>
+                    <th>數量</th>
+                    <th>單價</th>
+                    <th>小計</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>
+                        <form action="{{ url_for('update_cart', product_id=item.id) }}" method="POST">
+                            <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                            <button type="submit" class="btn">更新</button>
+                        </form>
+                    </td>
+                    <td>{{ item.price | format_currency }}</td>
+                    <td>{{ (item.price * item.quantity) | format_currency }}</td>
+                    <td>
+                        <form action="{{ url_for('remove_from_cart', product_id=item.id) }}" method="POST">
+                            <button type="submit" class="btn">刪除</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- 計算總價 -->
+        <div class="cart-summary">
+            <p>總價: 
+                {% set total = 0 %}
+                {% for item in cart %}
+                    {% set total = total + item.price * item.quantity %}
+                {% endfor %}
+                {{ total | format_currency }}
+            </p>
+            <a href="/checkout" class="btn">結帳</a>
+        </div>
+        {% else %}
+        <p>您的購物車是空的。</p>
+        {% endif %}
+    </section>
+</main>
+
+<!-- 頁尾 -->
+<footer>
+    <p>&copy; 2025 JRUVAULT 代購網站。所有權利保留。</p>
+</footer>
+
+</body>
+</html>

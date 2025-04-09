@@ -1,0 +1,9 @@
+<h2>結帳</h2>
+<ul>
+    {% for item in cart %}
+    <li>{{ item['name'] }} - {{ item['price'] }}</li>
+    {% endfor %}
+</ul>
+<form method="POST">
+    <button type="submit">確認付款</button>
+</form>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鞋子 - JRUVAULT 代購網站</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* 基本樣式 */
+        body {
+            font-family: 'Segoe UI', '微軟正黑體', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        /* 頁首 */
+        header {
+            background-color: #f5a9b8;
+            color: #fff;
+            padding: 20px 40px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        header img {
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin: 10px 0;
+        }
+
+        nav ul {
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #d18d95;
+        }
+
+        /* Hero 區塊 */
+        .hero {
+            background: linear-gradient(to bottom, #f5a9b8, #f9c2c6);
+            color: #fff;
+            text-align: center;
+            padding: 120px 20px 60px;  /* 預留 header 的空間 */
+            padding-top: 160px; /* 修正被header遮擋問題，這樣會給封面增加額外的上邊距 */
+            box-shadow: inset 0 -2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-logo {
+            height: 120px;
+            margin-bottom: 30px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin: 20px 0;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin: 16px 0 32px;
+        }
+
+        .hero-button {
+            background-color: #d94c84;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .hero-button:hover {
+            background-color: #c13c73;
+        }
+
+        /* 主內容區 */
+        main {
+            padding: 120px 20px 40px;  /* 增加 padding-top 來避免被header遮擋 */
+        }
+
+        /* 商品區塊 */
+        .product-section {
+            padding: 60px 20px;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .product-section h2 {
+            font-size: 2rem;
+            color: #d94c84;
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 16px;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #d94c84;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .card-button {
+            display: inline-block;
+            background-color: #d94c84;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 24px;
+            transition: background-color 0.3s;
+        }
+
+        .card-button:hover {
+            background-color: #c13c73;
+        }
+
+        /* 頁尾 */
+        footer {
+            background-color: #f5a9b8;
+            color: #fff;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+            border-top: 2px solid #ffc1d6;
+        }
+
+        /* 商品詳細頁 */
+        .product-detail-container {
+            padding: 60px 20px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+        }
+
+        .product-detail-card {
+            display: flex;
+            flex-direction: column;
+            max-width: 900px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .product-detail-card {
+                flex-direction: row;
+                gap: 40px;
+            }
+        }
+
+        .detail-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+
+        .detail-info {
+            flex: 1;
+        }
+
+        .detail-info h1 {
+            font-size: 2rem;
+            color: #d94c84;
+            margin-bottom: 10px;
+        }
+
+        .detail-info .price {
+            font-size: 1.5rem;
+            color: #555;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .detail-info .description {
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* 響應式設計調整 */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .hero-button {
+                padding: 10px 20px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 頁首 -->
+<header>
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="JRUVAULT Logo">
+        <h1>歡迎來到 JRUVAULT 代購網站</h1>
+    </div>
+    <nav>
+        <ul class="nav-left">
+            <li><a href="/">首頁</a></li>
+            <li><a href="/products">產品分類</a></li>
+            <li><a href="/how_it_works">如何運作</a></li>
+            <li><a href="/faq">常見問題</a></li>
+            <li><a href="/contact">聯絡我們</a></li>
+        </ul>
+        <ul class="nav-right">
+            <li><a href="/login">登入</a></li>
+            <li><a href="/register">註冊</a></li>
+            <li><a href="/cart">購物車 </a></li>  <!-- 顯示購物車數量 -->
+        </ul>
+    </nav>
+</header>
+    <!-- 產品內容 -->
+    <main>
+        <section class="product-section">
+            <h2>我們的球鞋</h2>
+            <p>在這裡你可以找到最新的球鞋，各類型一應俱全！</p>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="your-image.jpg" alt="產品1">
+                    <h3>球鞋款式1</h3>
+                    <p class="price">$199</p>
+                    <a href="#" class="card-button">查看詳情</a>
+                </div>
+                <div class="product-card">
+                    <img src="your-image.jpg" alt="產品2">
+                    <h3>球鞋款式2</h3>
+                    <p class="price">$229</p>
+                    <a href="#" class="card-button">查看詳情</a>
+                </div>
+                <!-- 可以繼續添加更多產品卡片 -->
+            </div>
+        </section>
+    </main>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2025 JRUVAULT 代購網站。所有權利保留。</p>
+    </footer>
+
+</body>
+</html>

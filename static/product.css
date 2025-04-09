@@ -1,0 +1,67 @@
+/* styles.css */
+
+/* 設定整個頁面的字型與背景 */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* 設定標題樣式 */
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 設定導覽列 */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: #0056b3;
+}
+
+/* 產品內容區 */
+main {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* 列表樣式 */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 18px;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+/* 頁尾樣式 */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+}

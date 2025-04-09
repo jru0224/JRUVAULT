@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.name }} - JRUVAULT 商品詳情</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>{{ product.name }}</h1>
+    </header>
+    <main class="product-detail">
+        <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}">
+        <p class="price">{{ product.price }}</p>
+        <p>{{ product.description }}</p>
+        <a href="/" class="back-button">返回首頁</a>
+    </main>
+</body>
+</html>

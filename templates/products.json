@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "GOODBAI 流浪鞋｜晴空白",
+    "price": "NT$3,280",
+    "image": "goodbai-shoe.jpg",
+    "description": "一雙結合設計與舒適的晴空白流浪鞋，來自 GOODBAI。"
+  },
+  {
+    "id": 2,
+    "name": "GOODBAI logo 星星撞色連帽外套",
+    "price": "NT$2,700",
+    "image": "GOODBAI coat.jpg",
+    "description": "潮流必備！撞色設計搭配刺繡 logo，個性滿分。"
+  },
+  {
+    "id": 3,
+    "name": "GOODBAI刺繡logo鴨舌帽",
+    "price": "NT$1,200",
+    "image": "GOODBAI hat.jpg",
+    "description": "清新簡約風格帽款，男女皆適用。"
+  }
+ ]
