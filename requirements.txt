@@ -1,8 +1,11 @@
+blinker==1.9.0
 certifi==2025.1.31
 chardet==4.0.0
 click==8.1.8
 colorama==0.4.6
 Flask==2.0.1
+Flask-SQLAlchemy==3.1.1
+greenlet==3.1.1
 gunicorn==23.0.0
 idna==2.10
 itsdangerous==2.2.0
@@ -10,7 +13,8 @@ Jinja2==3.1.6
 MarkupSafe==3.0.2
 packaging==24.2
 requests==2.25.1
+SQLAlchemy==2.0.40
+typing_extensions==4.13.1
 urllib3==1.26.20
-Werkzeug==2.0.0  # 根據需要調整為與 Flask 兼容的版本
-flask_sqlalchemy==2.5.1
+Werkzeug==3.1.3
 
