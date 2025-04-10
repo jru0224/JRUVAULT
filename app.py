@@ -223,5 +223,5 @@ def remove_from_cart(product_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=5002, use_reloader=False)
-    
+    #app.run(debug=True,host='0.0.0.0', port=5002, use_reloader=False)
+    app.run(host='0.0.0.0', port=8080, debug=True)
