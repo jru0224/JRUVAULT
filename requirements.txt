@@ -22,8 +22,3 @@ Flask-WTF==1.2.1
 email-validator==2.1.1
 WTForms==3.1.2
 mysqlclient==2.2.4
-
-<<<<<<< HEAD
-=======
-
->>>>>>> ca8dd3b6be27b32e7eba73721be250db560283d3
