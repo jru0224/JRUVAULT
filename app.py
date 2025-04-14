@@ -266,9 +266,14 @@ logging.basicConfig(level=logging.DEBUG)
     #app.run(debug=True,host='0.0.0.0', port=5002, use_reloader=False)
     #app.run(host='0.0.0.0', port=8080, debug=True)
 if __name__ == '__main__':
+<<<<<<< HEAD
     app.run(host='0.0.0.0', port=8080, debug=True, use_reloader=False)
 
 app.config['DEBUG'] = True  # 開啟調試模式
 app.config['PROPAGATE_EXCEPTIONS'] = True  # 確保錯誤能夠被完整追蹤
 
     
+=======
+    #app.run(debug=True,host='0.0.0.0', port=5002, use_reloader=False)
+    app.run(host='0.0.0.0', port=8080, debug=True)
+>>>>>>> ca8dd3b6be27b32e7eba73721be250db560283d3
