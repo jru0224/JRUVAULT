@@ -6,13 +6,18 @@
 </head>
 <body>
     <h1>目前所有商品</h1>
+    <a href="{{ url_for('admin.add_product') }}">➕ 新增商品</a>
     <ul>
         {% for product in products %}
         <li>
-            <strong>ID:</strong> {{ product.id }} <br>
-            <strong>名稱:</strong> {{ product.name }} <br>
-            <strong>價格:</strong> {{ product.price }} <br>
-            <strong>圖片檔名:</strong> {{ product.image }}
+            <strong>ID:</strong> {{ product.id }}<br>
+            <strong>名稱:</strong> {{ product.name }}<br>
+            <strong>價格:</strong> {{ product.price }}<br>
+            <strong>圖片檔名:</strong> {{ product.image }}<br>
+            <a href="{{ url_for('admin.edit_product', product_id=product.id) }}">✏️ 編輯</a>
+            <form method="POST" action="{{ url_for('admin.delete_product', product_id=product.id) }}" style="display:inline;">
+                <button type="submit" onclick="return confirm('確定要刪除嗎？')">🗑️ 刪除</button>
+            </form>
             <hr>
         </li>
         {% endfor %}

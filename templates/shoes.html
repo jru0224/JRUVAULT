@@ -133,7 +133,7 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr); /* 一行四個 */
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
@@ -271,28 +271,7 @@
     </style>
 </head>
 <body>
-
-    <!-- 頁首 -->
-<header>
-    <div class="logo-container">
-        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="JRUVAULT Logo">
-        <h1>歡迎來到 JRUVAULT 代購網站</h1>
-    </div>
-    <nav>
-        <ul class="nav-left">
-            <li><a href="/">首頁</a></li>
-            <li><a href="/products">產品分類</a></li>
-            <li><a href="/how_it_works">如何運作</a></li>
-            <li><a href="/faq">常見問題</a></li>
-            <li><a href="/contact">聯絡我們</a></li>
-        </ul>
-        <ul class="nav-right">
-            <li><a href="/login">登入</a></li>
-            <li><a href="/register">註冊</a></li>
-            <li><a href="/cart">購物車 </a></li>  <!-- 顯示購物車數量 -->
-        </ul>
-    </nav>
-</header>
+{% include 'header.html' %}
     <!-- 產品內容 -->
     <main>
         <section class="product-section">
@@ -300,15 +279,27 @@
             <p>在這裡你可以找到最新的球鞋，各類型一應俱全！</p>
             <div class="product-grid">
                 <div class="product-card">
-                    <img src="your-image.jpg" alt="產品1">
-                    <h3>球鞋款式1</h3>
-                    <p class="price">$199</p>
+                    <img src="{{ url_for('static', filename='shoes1.png') }}" alt="shoes1">
+                    <h3>Nike Air Force 1</h3>
+                    <p class="price">$2,700</p>
                     <a href="#" class="card-button">查看詳情</a>
                 </div>
                 <div class="product-card">
-                    <img src="your-image.jpg" alt="產品2">
-                    <h3>球鞋款式2</h3>
-                    <p class="price">$229</p>
+                    <img src="{{ url_for('static', filename='shoes2.jpg') }}" alt="shoes2">
+                    <h3>Air Jordan 1 Low 灰白 </h3>
+                    <p class="price">$3,200</p>
+                    <a href="#" class="card-button">查看詳情</a>
+                </div>
+                <div class="product-card">
+                    <img src="{{ url_for('static', filename='shoes2.jpg') }}" alt="shoes2">
+                    <h3>Air Jordan 1 Low 灰白 </h3>
+                    <p class="price">$3,200</p>
+                    <a href="#" class="card-button">查看詳情</a>
+                </div>
+                <div class="product-card">
+                    <img src="{{ url_for('static', filename='shoes2.jpg') }}" alt="shoes2">
+                    <h3>Air Jordan 1 Low 灰白 </h3>
+                    <p class="price">$3,200</p>
                     <a href="#" class="card-button">查看詳情</a>
                 </div>
                 <!-- 可以繼續添加更多產品卡片 -->

@@ -1,0 +1,30 @@
+<!-- templates/header.html -->
+<header>
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="JRUVAULT Logo">
+        <h1>歡迎來到 JRUVAULT 代購網站</h1>
+        {% if session.get('user_id') %}
+            <!--<p style="font-weight: bold;">歡迎，{{ current_user.name }}！</p>-->
+        {% endif %}
+    </div>
+    <nav>
+        <ul class="nav-left">
+            <li><a href="/">首頁</a></li>
+            <li><a href="/products">產品分類</a></li>
+            <li><a href="/how_it_works">如何運作</a></li>
+            <li><a href="/faq">常見問題</a></li>
+            <li><a href="/contact">聯絡我們</a></li>
+        </ul>
+        <ul class="nav-right">
+            {% if 'user_id' in session %}
+                <li class="welcome-text">歡迎，{{ current_user.username }}</li>
+                <li><a href="/logout">登出</a></li>
+            {% else %}
+                <li><a href="/login">登入</a></li>
+                <li><a href="/register">註冊</a></li>
+            {% endif %}
+            <li><a href="/cart">購物車</a></li>
+        </ul>
+
+    </nav>
+</header>

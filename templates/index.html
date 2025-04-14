@@ -9,37 +9,37 @@
 </head>
 <body>
    
-<!-- 頁首 -->
-<header>
-    <div class="logo-container">
-        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="JRUVAULT Logo">
-        <h1>歡迎來到 JRUVAULT 代購網站</h1>
-    </div>
-    <nav>
-        <ul class="nav-left">
-            <li><a href="/">首頁</a></li>
-            <li><a href="/products">產品分類</a></li>
-            <li><a href="/how_it_works">如何運作</a></li>
-            <li><a href="/faq">常見問題</a></li>
-            <li><a href="/contact">聯絡我們</a></li>
-        </ul>
-        <ul class="nav-right">
-            <li><a href="/login">登入</a></li>
-            <li><a href="/register">註冊</a></li>
-            <li><a href="/cart">購物車 </a></li>  <!-- 顯示購物車數量 -->
-        </ul>
-    </nav>
-</header>
+{% include 'header.html' %}
 
-    <!-- Hero 區塊 -->
-    <section class="hero">
-        <div class="hero-content">
-            <img src="{{ url_for('static', filename='logo_transparent_strict.png') }}" alt="JRUVAULT Logo" class="hero-logo">
-            <h1>讓購物變簡單</h1>
-            <p>JRUVAULT 幫你輕鬆代購海外商品，安心又快速直送到家！</p>
-            <a href="/products" class="hero-button">立即開始代購</a>
-        </div>
-    </section>
+   <!-- Hero 區塊 -->
+<section class="hero">
+    <div class="hero-content">
+        <img src="{{ url_for('static', filename='logo_transparent_strict.png') }}" alt="JRUVAULT Logo" class="hero-logo">
+        <h1>讓購物變簡單</h1>
+        <p>JRUVAULT 幫你輕鬆代購海外商品，安心又快速直送到家！</p>
+        
+        <h2>JRUVAULT 代購網站簡介</h2>
+        <p>歡迎來到 JRUVAULT，您的專屬全球代購平台！我們致力於為您提供一站式的跨境購物體驗，讓您輕鬆購買世界各地的商品，<p>
+        <p>無論是來自美國、日本、歐洲或其他地方的特色商品，JRUVAULT 都能幫助您快速、便捷地獲得。</p>
+        
+        <h2>服務範圍</h2>
+        <p>在 JRUVAULT，我們提供多樣化的代購服務，滿足各類需求。無論您是在尋找限量版時尚商品、熱門的電子產品，還是獨特的生活精品，我們都能為您提供最具競爭力的價格和最專業的代購服務。</p>
+        
+        <h2>為什麼選擇 JRUVAULT？</h2>
+        <ul>
+            <li><strong>全球購物無國界：</strong>通過我們的平台，您可以輕鬆跨越國界，購買到全球各地的產品。</li>
+            <li><strong>專業代購服務：</strong>我們擁有一支專業的代購團隊，能夠幫助您處理從選購、支付到物流的每一個環節，確保您的購物體驗順暢無憂。</li>
+            <li><strong>安全保障：</strong>我們承諾所有交易過程都將受到嚴格的安全保護，您的個人信息和支付資料絕對保密。</li>
+            <li><strong>快捷的配送方式：</strong>我們與多家國際物流公司合作，為您提供多種配送選擇，保證您的商品準時、安全地送達。</li>
+        </ul>
+        
+        <h2>我們的使命</h2>
+        <p>JRUVAULT 的使命是幫助每一位消費者打破國際購物的壁壘，讓全球的優質商品觸手可及。無論您身在何處，我們都將竭盡所能，為您帶來最佳的購物體驗。</p>
+        <p>現在就加入 JRUVAULT，開始您的全球購物之旅，讓我們為您實現跨境購物的夢想！</p>
+        
+        <a href="/products" class="hero-button">立即開始代購</a>
+    </div>
+</section>
 
     <!-- 商品區塊 (模板渲染) -->
     <main>

@@ -32,7 +32,7 @@
         header {
             background-color: #f5a9b8;
             color: #fff;
-            padding: 20px 40px;
+            padding: 10px 20px; /* 減少上下內邊距 */
             text-align: center;
             position: fixed;
             top: 0;
@@ -44,29 +44,29 @@
         }
 
         header img {
-            height: 60px;
-            margin-bottom: 10px;
+            height: 50px; /* 減少logo的大小 */
+            margin-bottom: 8px;
         }
 
         header h1 {
-            font-size: 1.8rem;
-            margin: 10px 0;
+            font-size: 1.6rem; /* 減小字體大小 */
+            margin: 5px 0;
         }
 
         nav ul {
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         nav ul li {
             display: inline;
-            margin-right: 15px;
+            margin-right: 12px;
         }
 
         nav ul li a {
             color: #fff;
             font-weight: bold;
-            padding: 6px 14px;
-            border-radius: 8px;
+            padding: 4px 10px; /* 減小按鈕間距 */
+            border-radius: 6px;
             transition: background-color 0.3s;
         }
 
@@ -76,30 +76,54 @@
 
         /* 主內容區 */
         main {
-            padding: 120px 20px 40px;  /* 增加 padding-top 來避免被header遮擋 */
+            padding: 100px 20px 40px; /* 減少padding-top，讓內容更靠近頁面 */
         }
 
-        /* 服裝區塊 */
-        section {
-            padding: 60px 20px;
-            background-color: #fff;
+        /* Hero 區塊 */
+        .hero {
+            background: linear-gradient(to bottom, #f5a9b8, #f9c2c6);
+            color: #fff;
             text-align: center;
+            padding: 100px 20px 60px; /* 減少上方內邊距 */
+            padding-top: 140px; /* 減少與 header 之間的距離 */
+            box-shadow: inset 0 -2px 8px rgba(0, 0, 0, 0.05);
         }
 
-        section h2 {
-            font-size: 2rem;
-            color: #d94c84;
-            margin-bottom: 40px;
+        .hero-logo {
+            height: 100px; /* 減少hero logo大小 */
+            margin-bottom: 20px;
         }
 
-        section ul {
-            font-size: 1.2rem;
-            margin: 0;
-            padding: 0;
+        .hero-content h1 {
+            font-size: 2rem; /* 減少hero文字大小 */
+            margin: 10px 0;
         }
 
-        section ul li {
-            margin: 12px 0;
+        .hero-content p {
+            font-size: 1.1rem; /* 減小文字大小 */
+            margin: 10px 0 30px;
+        }
+
+        .hero-button {
+            background-color: #d94c84;
+            color: white;
+            padding: 10px 20px; /* 減小按鈕大小 */
+            font-size: 1rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .hero-button:hover {
+            background-color: #c13c73;
+        }
+
+        /* 商品區塊 */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px; /* 減少商品間隔 */
+            padding: 0 10px;
         }
 
         /* 頁尾 */
@@ -115,47 +139,86 @@
 </head>
 <body>
 
-    <!-- 頁首 -->
-<header>
-    <div class="logo-container">
-        <img src="{{ url_for('static', filename='logo_transparent.png') }}" alt="JRUVAULT Logo">
-        <h1>歡迎來到 JRUVAULT 代購網站</h1>
-    </div>
-    <nav>
-        <ul class="nav-left">
-            <li><a href="/">首頁</a></li>
-            <li><a href="/products">產品分類</a></li>
-            <li><a href="/how_it_works">如何運作</a></li>
-            <li><a href="/faq">常見問題</a></li>
-            <li><a href="/contact">聯絡我們</a></li>
-        </ul>
-        <ul class="nav-right">
-            <li><a href="/login">登入</a></li>
-            <li><a href="/register">註冊</a></li>
-            <li><a href="/cart">購物車 </a></li>  <!-- 顯示購物車數量 -->
-        </ul>
-    </nav>
-</header>
+{% include 'header.html' %}
+<!-- 主內容 -->
+<main>
+    <section style="padding-top: 120px;">
+        <h2>T恤</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='GOODBAI-Tshirt-1.png') }}" alt="T恤">
+                <h3>GOODBAI 多色双爱心花体logo印花圆领oversize短袖T恤</h3>
+                <p class="price">$1,100</p>
+                <a href="#" class="card-button">查看詳情</a>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='GOODBAI-Tshirt-2.png') }}" alt="T恤">
+                <h3>GOODBAI胶印logo插肩袖oversize夏季重磅T恤短袖</h3>
+                <p class="price">$1,100</p>
+                <a href="#" class="card-button">查看詳情</a>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='GOODBAI-Tshirt-3.png') }}" alt="T恤">
+                <h3>GOODBAI 组合logo多色印花圆领oversize短袖T恤</h3>
+                <p class="price">$1,100</p>
+                <a href="#" class="card-button">查看詳情</a>
+            </div>
+        </div>
+    </section>
 
-    <!-- 產品內容 -->
-    <main>
-        <section>
-            <h2>我們的服裝有</h2>
-            <p>在這裡你可以找到各式各樣的服裝，從日常穿著到運動裝應有盡有！</p>
-            <!-- 你可以在這裡列出具體的服裝 -->
-            <ul>
-                <li>T 恤</li>
-                <li>襯衫</li>
-                <li>運動褲</li>
-                <li>外套</li>
-            </ul>
-        </section>
-    </main>
+    <!-- 其他商品區塊 -->
+    <section>
+        <h2>外套</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='GOODBAI 春日里的小碎花外套.jpg') }}" alt="運動褲">
+                <h3>GOODBAI 春日里的小碎花外套</h3>
+                <p class="price">$2,700</p>
+                <a href="#" class="card-button">查看詳情</a>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='GOODBAI coat.jpg') }}" alt="外套">
+                <h3>GOODBAI logo 星星撞色連帽外套</h3>
+                <p class="price">$2,700</p>
+                <a href="#" class="card-button">查看詳情</a>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='GOODBAI916coat.jpg') }}" alt="外套">
+                <h3>GGOODBAI 916 滿版外套</h3>
+                <p class="price">$3,000</p>
+                <a href="#" class="card-button">查看詳情</a>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2>褲子</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='GOODBAIpant1.png') }}" alt="褲子">
+                <h3>GOODBAI GOODEES梦幻星星印花阔腿长裤</h3>
+                <p class="price">$3,500</p>
+                <a href="#" class="card-button">查看詳情</a>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='newbalance-pant.png') }}" alt="褲子">
+                <h3>newbalance工裝長褲</h3>
+                <p class="price">$4,500</p>
+                <a href="#" class="card-button">查看詳情</a>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='adidas-pant.png') }}" alt="褲子">
+                <h3>adidas降落傘褲</h3>
+                <p class="price">$3,600</p>
+                <a href="#" class="card-button">查看詳情</a>
+            </div>
+        </div>
+    </section>
+</main>
 
-    <!-- 頁尾 -->
-    <footer>
-        <p>&copy; 2025 JRUVAULT 代購網站。所有權利保留。</p>
-    </footer>
+<!-- 頁尾 -->
+<footer>
+    <p>&copy; 2025 JRUVAULT 代購網站。所有權利保留。</p>
+</footer>
 
 </body>
 </html>

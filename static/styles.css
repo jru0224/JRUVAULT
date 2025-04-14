@@ -23,7 +23,7 @@ ul {
 header {
     background-color: #f5a9b8;
     color: #fff;
-    padding: 20px 40px;
+    padding: 10px 40px; /* 減少上下的 padding */
     text-align: center;
     position: fixed;
     top: 0;
@@ -36,6 +36,26 @@ header {
     flex-direction: column;
     align-items: center;
 }
+
+header img {
+    height: 50px;  /* 減小 logo 高度 */
+    margin-bottom: 5px; /* 減少與標題的間距 */
+}
+
+header h1 {
+    font-size: 1.6rem; /* 減小標題字體大小 */
+    margin: 5px 0; /* 減少標題上下的間距 */
+}
+
+/* 歡迎文字 */
+.welcome-text {
+    font-size: 0.95rem;
+    color: #fff;
+    font-weight: 500;
+    padding: 6px 10px;
+    white-space: nowrap;
+}
+
 
 /* Logo 容器 */
 header .logo-container {
@@ -56,11 +76,12 @@ header h1 {
 /* 導航 */
 nav {
     display: flex;
-    justify-content: space-between;  /* 讓 nav 左右項目分開 */
+    justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding-top: 10px;
+    padding-top: 8px;  /* 調整頂部空間 */
 }
+
 
 nav .nav-left {
     display: flex;
@@ -92,10 +113,10 @@ nav ul li a:hover {
     background: linear-gradient(to bottom, #f5a9b8, #f9c2c6);
     color: #fff;
     text-align: center;
-    padding: 120px 20px 60px;
-    padding-top: 160px;
+    padding: 80px 20px 60px; /* 減少 padding-top */
     box-shadow: inset 0 -2px 8px rgba(0, 0, 0, 0.05);
 }
+
 
 .hero-logo {
     height: 120px;
@@ -104,12 +125,12 @@ nav ul li a:hover {
 
 .hero-content h1 {
     font-size: 2.5rem;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .hero-content p {
     font-size: 1.2rem;
-    margin: 16px 0 32px;
+    margin: 10px 0 32px;
 }
 
 .hero-button {
@@ -129,7 +150,7 @@ nav ul li a:hover {
 
 /* 主內容區 */
 main {
-    padding: 120px 20px 40px;  /* 增加 padding-top 來避免被header遮擋 */
+    padding: 180px 20px 40px;  /* 增加 padding-top 來避免被header遮擋 */
 }
 
 

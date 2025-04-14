@@ -4,10 +4,16 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import json
 import os
 
+
+
+
 app = Flask(__name__, static_folder='static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'  # 設定 SQLite 資料庫
 app.config['SECRET_KEY'] = 'your_secret_key'
 db = SQLAlchemy(app)
+
+from admin import bp as admin_bp
+app.register_blueprint(admin_bp)
 
 # 用戶模型
 class User(db.Model):
@@ -134,39 +140,70 @@ def register():
         hashed_password = generate_password_hash(password)
 
         # 儲存用戶資料到資料庫
-        new_user = User(username=username, email=email, password=hashed_password)
-        db.session.add(new_user)
-        db.session.commit()
-
-        flash('註冊成功！請登入您的帳戶。')
-        return redirect(url_for('login'))
-    
+        try:
+            new_user = User(username=username, email=email, password=hashed_password)
+            db.session.add(new_user)
+            db.session.commit()
+            flash('註冊成功！請登入您的帳戶。')
+            return redirect(url_for('login'))
+        except Exception as e:
+            db.session.rollback()  # 回滾事務
+            flash(f'註冊失敗: {str(e)}')
+            print(f"Error: {e}")  # 在控制台輸出錯誤訊息
+            return redirect(url_for('register'))
     return render_template('register.html')
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+        email = request.form.get('email')
+        password = request.form.get('password')
 
-        # 查詢用戶
+        if not email or not password:
+            flash('請填寫所有欄位！')
+            return redirect(url_for('login'))
+
+        # 查詢用戶資料
         user = User.query.filter_by(email=email).first()
 
         if user and check_password_hash(user.password, password):
-            # 登入成功，將用戶資料儲存至 session
             session['user_id'] = user.id
+            session['username'] = user.username  # 儲存用戶名
+
+            # 檢查是否為管理員，假設 admin@example.com 為管理員帳號
+            session['is_admin'] = (user.email == 'admin@example.com')
+
             flash('登入成功！')
-            return redirect(url_for('home'))  # 登入後跳轉至主頁
+            return redirect(url_for('home'))
         else:
             flash('電子郵件或密碼錯誤')
+            return redirect(url_for('login'))
 
     return render_template('login.html')
+
 @app.route('/home')
 def home():
+    print(f"Session: {session}")  # 查看 session 中的內容
     if 'user_id' not in session:
-        return redirect(url_for('login'))  # 如果沒有登入則重定向到登入頁面
-    return render_template('home.html')
+        return redirect(url_for('login'))
+    return render_template('index.html')
+
+from flask import g
+
+@app.before_request
+def load_logged_in_user():
+    user_id = session.get('user_id')
+    if user_id:
+        g.user = User.query.get(user_id)
+    else:
+        g.user = None
+
+@app.context_processor
+def inject_user():
+    return dict(current_user=g.user)
+
 
 @app.route('/logout')
 def logout():
@@ -221,7 +258,17 @@ def remove_from_cart(product_id):
     flash('商品已從購物車中移除')
     return redirect(url_for('cart'))
 
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
+
+#if __name__ == '__main__':
+    #app.run(debug=True,host='0.0.0.0', port=5002, use_reloader=False)
+    #app.run(host='0.0.0.0', port=8080, debug=True)
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=5002, use_reloader=False)
+    app.run(host='0.0.0.0', port=8080, debug=True, use_reloader=False)
+
+app.config['DEBUG'] = True  # 開啟調試模式
+app.config['PROPAGATE_EXCEPTIONS'] = True  # 確保錯誤能夠被完整追蹤
+
     
