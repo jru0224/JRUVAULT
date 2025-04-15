@@ -220,7 +220,14 @@ def cart_count():
     cart = session.get('cart', [])
     print(f"cart: {cart}, type of cart: {type(cart)}")  # 輸出 cart 的內容和類型
     return dict(cart_count=len(cart))  # 確保是列表並計算長度
-
+@app.template_filter('format_currency')
+def format_currency(value):
+    if value is None:
+        return value
+    try:
+        return f"${value:,.2f}"  # 格式化為貨幣，兩位小數
+    except ValueError:
+        return value
 
 # 加入商品到購物車
 @app.route('/add-to-cart/<int:product_id>', methods=['POST'])
