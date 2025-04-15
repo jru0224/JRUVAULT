@@ -310,3 +310,14 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 }
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1; /* 主內容會撐開剩餘空間 */
+}
+
